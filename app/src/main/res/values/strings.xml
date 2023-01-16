@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">App Manager</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_backup">Backup your apps</string>
+    <string name="action_activities">Activities list</string>
+    <!-- Strings used for fragments for navigation -->
+
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="app_launch">Launch app</string>
+    <string name="app_uninstall">Uninstall app</string>
+    <string name="app_info">App info</string>
+    <string name="app_package_name">Package name: %1$s</string>
+    <string name="app_apk_size">APK size: %1$s MB</string>
+    <string name="app_app_size">App data size: %1$s MB</string>
+    <string name="app_version">Version: %1$s</string>
+    <string name="app_install_date">Install date: %1$s</string>
+    <string name="app_target_sdk">Target SDK version: %1$d</string>
+    <string name="app_min_sdk">Min SDK version: %1$d</string>
+    <string name="app_compile_sdk">Compile SDK version: %1$d</string>
+    <string name="app_permissions">App permissions</string>
+    <string name="app_features">App features</string>
+    <string name="none_app_permissions">This application does not require any permissions</string>
+    <string name="none_app_features">This application does not require any features</string>
+    <string name="checksum">Checksum</string>
+    <string name="md5_sum" translatable="false">MD5: %1$s</string>
+    <string name="sha1_sum" translatable="false">SHA-1: %1$s</string>
+    <string name="sha256_sum" translatable="false">SHA-256: %1$s</string>
+
+    <string name="search_md5">Search by MD5</string>
+    <string name="search_sha1">Search by SHA-1</string>
+    <string name="search_sha256">Search by SHA-256</string>
+    <string name="extract_apk">Extract APK</string>
+
+    <string name="upload_apk">Upload APK</string>
+    <string name="activity_launcher">Activity Launcher</string>
+    <string name="activity_launch">Launch activity</string>
+
+    <string name="log_in">Log-in</string>
+    <string name="sign_up">Sign-up</string>
+    <string name="sign_out">Sign-out</string>
+    <string name="auth_login">Enter Login</string>
+    <string name="auth_pass">Enter Password</string>
+    <string name="auth_confirm_pass">Confirm Password</string>
+    <string name="auth_user_name">Enter Your User Name</string>
+    <string name="auth_authorization">Authorization</string>
+    <string name="enter_comment">Enter a comment</string>
+    <string name="backup_your_file">Backup your files</string>
+
+
+
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Менеджер приложений</string>
+    <string name="action_settings">Настройки</string>
+    <string name="action_backup">Резервная копия приложений</string>
+    <string name="action_activities">Список активностей</string>
+
+    <string name="next">Следующий</string>
+    <string name="previous">Предыдущий</string>
+
+    <string name="app_launch">Запустить приложение</string>
+    <string name="app_uninstall">Удалить приложение</string>
+    <string name="app_info">Информация о приложении</string>
+    <string name="app_package_name">Имя пакета: %1$s</string>
+    <string name="app_apk_size">Размер APK: %1$s МБ</string>
+    <string name="app_install_date">Дата установки: %1$s</string>
+    <string name="app_version">Версия: %1$s</string>
+    <string name="app_app_size">Размер данных приложения: %1$s МБ</string>
+    <string name="app_target_sdk">Целевая веостя SDK: %1$d</string>
+    <string name="app_min_sdk">Минимальная версия SDK: %1$d</string>
+    <string name="app_features">Фичи приложения</string>
+    <string name="app_compile_sdk">Компилируемая версия SDK: %1$d</string>
+    <string name="app_permissions">Разрешения приложения</string>
+    <string name="none_app_permissions">Этому приложению не требуются какие-либо разрешения</string>
+    <string name="none_app_features">Этому приложению не требуются какие-либо фичи</string>
+    <string name="checksum">Контрольная сумма</string>
+
+    <string name="search_md5">Искать по MD5</string>
+    <string name="search_sha1">Искать по SHA-1</string>
+    <string name="search_sha256">Искать по SHA-256</string>
+    <string name="extract_apk">Извлечь APK</string>
+    <string name="upload_apk">Загрузить APK</string>
+    <string name="activity_launcher">Лаунчер активностей</string>
+    <string name="activity_launch">Запустить активность</string>
+
+    <string name="log_in">Войти</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="sign_out">Выйти</string>
+    <string name="auth_login">Введтье логин</string>
+    <string name="auth_pass">Введите пароль</string>
+    <string name="auth_confirm_pass">Подтвердите пароль</string>
+    <string name="auth_user_name">Введите логин</string>
+    <string name="auth_authorization">Авторизация</string>
+    <string name="enter_comment">Введите комментарий</string>
+    <string name="backup_your_file">Резевная копия файлов</string>
+</resources>

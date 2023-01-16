@@ -1,0 +1,85 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id("kotlinx-serialization")
+    id 'kotlin-android-extensions'
+    id('androidx.navigation.safeargs')
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "ru.netology.app_manager"
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    //Utils
+    implementation 'commons-io:commons-io:2.11.0'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.0'
+    implementation "com.github.florent37:runtime-permission-kotlin:1.1.2"
+    implementation "org.zeroturnaround:zt-zip:1.15"
+
+    // Android
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+    //Logs
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    //Dependency Injection
+    def dagger_version = "2.36"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt("com.google.dagger:dagger-compiler:$dagger_version")
+    kapt("com.google.dagger:dagger-android-processor:$dagger_version")
+    kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0")
+
+    //Network
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+
+
+    //Navigation Component
+    def nav_version = "2.5.3"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+
+    // Tests
+    testImplementation "junit:junit:4.13.2"
+    androidTestImplementation "androidx.test.ext:junit:1.1.3"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
+}
