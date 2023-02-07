@@ -4,10 +4,11 @@
     <string name="action_settings">Настройки</string>
     <string name="action_backup">Резервная копия приложений</string>
     <string name="action_activities">Список активностей</string>
-
+    <string name="attention">Внимание</string>
+    <string name="cancel">Отмена</string>
     <string name="next">Следующий</string>
     <string name="previous">Предыдущий</string>
-
+    <string name="auth_please_signin">Чтоб продолжить, войдите или зарегистрируйтесь</string>
     <string name="app_launch">Запустить приложение</string>
     <string name="app_uninstall">Удалить приложение</string>
     <string name="app_info">Информация о приложении</string>
@@ -43,4 +44,7 @@
     <string name="auth_authorization">Авторизация</string>
     <string name="enter_comment">Введите комментарий</string>
     <string name="backup_your_file">Резевная копия файлов</string>
+
+    <string name="delete">Удалить</string>
+    <string name="download">Загрузить</string>
 </resources>

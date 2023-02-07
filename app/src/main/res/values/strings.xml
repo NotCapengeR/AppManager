@@ -4,10 +4,11 @@
     <string name="action_backup">Backup your apps</string>
     <string name="action_activities">Activities list</string>
     <!-- Strings used for fragments for navigation -->
-
+    <string name="attention">Attention</string>
+    <string name="cancel">Cancel</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
+    <string name="auth_please_signin">Please login or register to continue</string>
     <string name="app_launch">Launch app</string>
     <string name="app_uninstall">Uninstall app</string>
     <string name="app_info">App info</string>
@@ -47,6 +48,9 @@
     <string name="auth_authorization">Authorization</string>
     <string name="enter_comment">Enter a comment</string>
     <string name="backup_your_file">Backup your files</string>
+
+    <string name="delete">Delete</string>
+    <string name="download">Download</string>
 
 
 

@@ -90,5 +90,9 @@ object StringUtils {
 
     fun String.asMultipart(contentType: String? = null) = asMultipart(contentType?.toMediaType())
     fun String.asMultipart(contentType: MediaType?) = toRequestBody(contentType)
+
+    fun String.base64encode(): String = Base64.encodeToString(this.toByteArray(), Base64.NO_WRAP)
+
+    fun String.base64decode(): ByteArray = Base64.decode(this, Base64.NO_WRAP)
 }
 

@@ -18,12 +18,22 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders.usesCleartextTraffic = true
+        }
+        debug {
+            manifestPlaceholders.usesCleartextTraffic = false
         }
     }
     compileOptions {
@@ -42,15 +52,20 @@ dependencies {
 
     //Utils
     implementation 'commons-io:commons-io:2.11.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.21"
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.0'
     implementation "com.github.florent37:runtime-permission-kotlin:1.1.2"
     implementation "org.zeroturnaround:zt-zip:1.15"
 
     // Android
     implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     //Logs
@@ -62,6 +77,13 @@ dependencies {
     kapt("com.google.dagger:dagger-compiler:$dagger_version")
     kapt("com.google.dagger:dagger-android-processor:$dagger_version")
     kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0")
+
+    //Database
+    def room_version = "2.5.0"
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 
     //Network
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")

@@ -17,7 +17,7 @@ import ru.netology.app_manager.databinding.AppDetailsFragmentBinding
 import ru.netology.app_manager.di.getAppComponent
 import ru.netology.app_manager.utils.MathUtils.BYTE_LEN
 import ru.netology.app_manager.utils.TimeUtils
-import ru.netology.app_manager.utils.pow
+import ru.netology.app_manager.utils.MathUtils.pow
 import ru.netology.app_manager.utils.setDebouncedListener
 import ru.netology.app_manager.utils.setVisibility
 import java.text.DecimalFormat

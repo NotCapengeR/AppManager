@@ -3,15 +3,17 @@ package ru.netology.app_manager.ui.app_list
 import android.app.Application
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.zeroturnaround.zip.ZipUtil
+import ru.netology.app_manager.core.api.models.Backup
 import ru.netology.app_manager.core.api.repository.BackendRepository
 import ru.netology.app_manager.core.apk.manager.ApkExtractor
 import ru.netology.app_manager.core.apk.models.Apk
+import ru.netology.app_manager.core.helper.exceptions.ExceptionProvider
+import ru.netology.app_manager.core.helper.exceptions.NoError
 import ru.netology.app_manager.utils.getErrorMessage
 import timber.log.Timber
 import java.io.File
@@ -19,12 +21,17 @@ import javax.inject.Inject
 
 class AppListViewModel @Inject constructor(
     application: Application,
-    private val repository: BackendRepository
+    private val repository: BackendRepository,
+    private val exceptionProvider: ExceptionProvider
 ) : AndroidViewModel(application) {
 
     val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
-
+    val isLoggedIn: Boolean
+        get() = repository.isLoggedIn
     val appList: MutableLiveData<List<Apk>> = MutableLiveData(emptyList())
+    val backups: LiveData<List<Backup>> = repository.getBackups().asLiveData()
+    val onSuccess: MutableLiveData<String?> = MutableLiveData(null)
+    val error: MutableLiveData<String?> = MutableLiveData(null)
 
     init {
         loadApps()
@@ -41,7 +48,13 @@ class AppListViewModel @Inject constructor(
         }
     }
 
-    fun extractAll() {
+    fun signOut() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.signOut()
+        }
+    }
+
+    fun extractAll(comment: String?) {
         viewModelScope.launch(Dispatchers.IO) {
             isLoading.postValue(true)
             val appPath = ApkExtractor.getAppFolder()
@@ -70,8 +83,38 @@ class AppListViewModel @Inject constructor(
                 val zip = File(appPath, "Backup.zip")
                 ZipUtil.createEmpty(zip)
                 ZipUtil.packEntries(appsList.filterNotNull().toTypedArray(), zip)
+                repository.newBackup(zip, comment)
             }
             isLoading.postValue(false)
+        }
+    }
+
+    fun deleteBackup(backupId: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteBackup(backupId)
+        }
+    }
+
+    fun installBackup(backupId: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            isLoading.postValue(true)
+            val backup = repository.downloadBackup(backupId)
+            if (backup != null) {
+                onSuccess.value = backup.absolutePath
+            } else {
+                withContext(Dispatchers.Main) {
+                    exceptionProvider.getLastError().error.apply {
+                        if (this != NoError) error.value = this.getErrorMessage()
+                    }
+                }
+            }
+            isLoading.postValue(false)
+        }
+    }
+
+    fun fetchData() {
+        viewModelScope.launch {
+            repository.fetchData()
         }
     }
 

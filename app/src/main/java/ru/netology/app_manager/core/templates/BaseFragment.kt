@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.PopupMenu
 import androidx.annotation.CallSuper
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -78,17 +79,27 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), MenuProvider {
     }
 
     protected fun showPopupMenu(inflater: () -> PopupMenu) {
-        popupMenu = inflater.invoke()
-        popupMenu?.show()
+        if (activity?.isFinishing == false) {
+            popupMenu = inflater.invoke()
+            popupMenu?.show()
+        }
+    }
+
+    protected fun showDialog(build: AlertDialog.Builder.() -> AlertDialog.Builder) {
+        if (activity?.isFinishing == false) AlertDialog.Builder(requireActivity()).build().show()
     }
 
 
-    protected fun showSnackbar(text: String, isLong: Boolean = false) = AndroidUtils.showShackbar(
-        requireContext(),
-        binding.root,
-        text,
-        isLong
-    )
+    protected fun showSnackbar(text: String, isLong: Boolean = false) {
+        if (activity?.isFinishing == false) {
+            AndroidUtils.showShackbar(
+                requireContext(),
+                binding.root,
+                text,
+                isLong
+            )
+        }
+    }
 
     protected fun openUrl(url: String?) {
         AndroidUtils.openUrl(requireContext(), url)

@@ -39,10 +39,7 @@ interface BackendService {
 
     @GET("backups")
     @Headers("Accept: application/json")
-    suspend fun getBackups(
-        @Query("last_id") lastId: Long,
-        @Query("count") count: Int,
-    ): Response<List<Backup>>
+    suspend fun getBackups(): Response<List<Backup>>
 
     @POST("backups")
     @Multipart
@@ -58,10 +55,11 @@ interface BackendService {
 
     @GET("backups/{backup_id}")
     @Headers("Accept: application/json")
-    suspend fun getBackup(@Path("backup_id") backupId: Long): Response<Backup>
+    suspend fun getBackupInfo(@Path("backup_id") backupId: Long): Response<Backup>
 
     @GET("backups/{backup_id}/download")
-    @Headers("Accept: application/octet-stream")
+    @Streaming
+    @Headers("Accept: application/zip; application/octet-stream", "Accept-Encoding: gzip, identity")
     suspend fun downloadBackup(@Path("backup_id") backupId: Long): Response<ResponseBody>
 
 }
