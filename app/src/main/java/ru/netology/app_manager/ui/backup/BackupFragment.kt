@@ -113,6 +113,8 @@ class BackupFragment : BaseFragment<BackupFragmentBinding>() {
     override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
         inflater.inflate(R.menu.backup_fragment_menu, menu)
+        menu.setGroupVisible(R.id.logged, viewModel.isLoggedIn)
+        menu.setGroupVisible(R.id.not_logged, !viewModel.isLoggedIn)
     }
 
 
@@ -120,6 +122,22 @@ class BackupFragment : BaseFragment<BackupFragmentBinding>() {
         return when (item.itemId) {
             R.id.sign_out -> {
                 viewModel.signOut()
+                true
+            }
+            R.id.sign_in ->{
+                mainNavController?.navigate(
+                    BackupFragmentDirections.actionBackupFragmentToLoginFragment(
+                        LoginFragment.LoginFragmentFlag.LOGIN
+                    )
+                )
+                true
+            }
+            R.id.sign_up ->{
+                mainNavController?.navigate(
+                    BackupFragmentDirections.actionBackupFragmentToLoginFragment(
+                        LoginFragment.LoginFragmentFlag.REGISTER
+                    )
+                )
                 true
             }
             else -> super.onMenuItemSelected(item)
