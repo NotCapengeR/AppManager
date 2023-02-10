@@ -16,8 +16,8 @@
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
 
-    <permission android:name="android.permission.QUERY_ALL_PACKAGES"
-        tools:ignore="ReservedSystemPermission" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission,ReservedSystemPermission" />
 
     <application
         android:name=".App"
